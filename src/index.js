@@ -15,6 +15,30 @@ app.get('/',(req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    return res.json({"fulfillmentText": "text"})
+    return res.json({
+          "fulfillmentMessages": [
+            {
+              "quickReplies": {
+                "title": "Sobre qual tema você deseja se atualizar?",
+                "quickReplies": [
+                  "Esportes",
+                  "Política",
+                  "Entretenimento",
+                  "Famosos"
+                ]
+              },
+              "platform": "FACEBOOK"
+            },
+            {
+              "text": {
+                "text": [
+                  "Olá! Eu sou o Casper, seu assistente virtual. Aqui trago as mais variadas notícias para você se atualizar."
+                ]
+              }
+            }
+          ] 
+        }  
+    )
 })
+
 app.listen(process.env.PORT || 3333);

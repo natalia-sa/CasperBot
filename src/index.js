@@ -1,8 +1,12 @@
 const express = require('express');
 
-const server = express();
+const app = express();
 
-server.get('/',(req, res) => {
+const cors = require('cors');
+
+app.use(cors());
+
+app.get('/',(req, res) => {
     return res.json({message: 'hello'});
 })
-server.listen(3333);
+app.listen(3333);

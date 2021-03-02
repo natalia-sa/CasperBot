@@ -19,7 +19,7 @@ app.post('/webhook', (req, res) => {
     var intentName = req.body.queryResult.intent.displayName;
 
     if(quickReply == "Esportes") {
-        return res.json({"fulfillmentMessages": "esportes"})
+        return res.json({"fulfillmentText": "esportes"})
     } 
     // else {
     //     return res.json({

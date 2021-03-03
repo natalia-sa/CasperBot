@@ -12,6 +12,11 @@ mongoose.connect('mongodb+srv://casper1:casper1@omnistack.oq54w.mongodb.net/casp
 
 const cors = require('cors');
 
+app.use(routes);
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.post('/webhook', (req, res) => {
     var intentName = req.body.queryResult.intent.displayName;
     
@@ -28,10 +33,5 @@ app.post('/webhook', (req, res) => {
         res.json({"fulfillmentText":"Notícias sobre esportes"});
     }
 })
-
-app.use(routes);
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(process.env.PORT || 3333);

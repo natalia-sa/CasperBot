@@ -2,6 +2,7 @@ const express = require('express')
 const routes = express.Router();
 const SessionController = require('./controllers/SessionController');
 const bodyParser = require('body-parser');
+const PostController = require('./controllers/PostController');
 
 routes.use(bodyParser.json());
 routes.use(bodyParser.urlencoded({ extended: true }));
@@ -11,6 +12,12 @@ routes.get('/',(req, res) => {
 })
 
 routes.post('/users', SessionController.store);
+
+routes.post('/post', PostController.store);
+
+routes.get('/post', PostController.index);
+
+routes.delete('/post', PostController.delete);
 
 routes.post('/webhook', (req, res) => {
     var intentName = req.body.queryResult.intent.displayName;

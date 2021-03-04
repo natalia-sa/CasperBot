@@ -6,7 +6,12 @@ module.exports = {
 
         const { pin } = req.body;
 
-        const user = await User.create({ name, pin});
+        let user = await User.findOne({ name });
+
+        if(!user) {
+            user = await User.create({ name, pin});
+        }
+        
 
         return res.json(user);
     }

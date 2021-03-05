@@ -18,11 +18,30 @@ routes.get('/post', PostController.index);
 
 routes.delete('/post', PostController.delete);
 
+routes.get('/postTheme',PostController.filterByTheme);
+
 routes.post('/webhook', (req, res) => {
     var intentName = req.body.queryResult.intent.displayName;
     
     if(intentName == "Default Welcome Intent - Política") {
-        res.json({"fulfillmentText":"Notícias sobre poĺitica"});
+        res.json({
+            "payload": {
+                "template_type":"generic",
+                "elements":[
+                   {
+                    "title":"<TITLE_TEXT>",
+                    "image_url":"<IMAGE_URL_TO_DISPLAY>",
+                    "subtitle":"<SUBTITLE_TEXT>",
+                    "default_action": {
+                      "type": "web_url",
+                      "url": "<DEFAULT_URL_TO_OPEN>",
+                    },
+                         
+                  },
+                
+                ]
+              }
+        });
         
     } else if(intentName == "Default Welcome Intent - Entretenimento") {
         res.json({"fulfillmentText":"Notícias sobre entretenimento"});

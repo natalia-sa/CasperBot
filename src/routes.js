@@ -25,7 +25,10 @@ routes.post('/webhook', (req, res) => {
     
     if(intentName == "Default Welcome Intent - Política") {
         res.json({
-            "message":{
+            "recipient":{
+                "id":"727672647895809"
+              },
+              "message":{
                 "attachment":{
                   "type":"template",
                   "payload":{
@@ -55,7 +58,11 @@ routes.post('/webhook', (req, res) => {
                     ]
                   }
                 }
-        }});
+              }
+            }
+                          
+                     
+        );
         
     } else if(intentName == "Default Welcome Intent - Entretenimento") {
         res.json({"fulfillmentText":"Notícias sobre entretenimento"});

@@ -14,5 +14,20 @@ module.exports = {
         
 
         return res.json(user);
+    },
+
+    async find(req, res) {
+        const { pin } = req.headers;
+        
+
+        let user = await User.findOne({ pin });
+
+        if(!user) {
+            return res.status(401).send({ error: "Unauthorized" });
+
+        } else {
+            return res.json(user);
+        }
+
     }
 }

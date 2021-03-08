@@ -9,8 +9,8 @@ module.exports = {
     },
 
     async delete(req, res) {
-        const { title } = req.body;
-        await Post.deleteOne({ title });
+        const { _id } = req.headers;
+        await Post.deleteOne({ _id });
 
         return res.json({message: "post deleted seccessfully"});
     },

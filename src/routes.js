@@ -36,7 +36,7 @@ routes.post('/webhook', (req, res) => {
                     "elements":[
                        {
                         "title":"Welcome!",
-                        "image_url":"https://petersfancybrownhats.com/company_image.png",
+                        "image_url":"https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2019/08/O-que-e-url.png",
                         "subtitle":"We have the right hat for everyone.",
                         "default_action": {
                           "type": "web_url",
@@ -48,10 +48,6 @@ routes.post('/webhook', (req, res) => {
                             "type":"web_url",
                             "url":"https://petersfancybrownhats.com",
                             "title":"View Website"
-                          },{
-                            "type":"postback",
-                            "title":"Start Chatting",
-                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
                           }              
                         ]      
                       }

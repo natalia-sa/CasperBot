@@ -31,6 +31,14 @@ module.exports = {
         return res.json(post);
     },
 
+    async updatePost(req, res) {
+        const { imageUrl, title, description, link, theme } = req.body;
+        const { _id } = req.headers;
+        await Post.findOneAndUpdate({ _id }, { imageUrl, title, description, link, theme});
+
+        return res.json({message: "post updated seccessfully"});
+    },
+
     async filterByTheme(theme) {
         const posts = await Post.find({theme: theme});
         return posts;

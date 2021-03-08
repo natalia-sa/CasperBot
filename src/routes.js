@@ -15,6 +15,8 @@ routes.get('/user', SessionController.find);
 
 routes.post('/post', PostController.store);
 
+routes.put('/post', PostController.updatePost)
+
 routes.get('/post', PostController.index);
 
 routes.delete('/post', PostController.delete);

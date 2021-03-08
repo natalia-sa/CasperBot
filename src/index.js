@@ -13,7 +13,6 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.PASSWORD}@o
 })
 
 app.use(cors());
-// app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);

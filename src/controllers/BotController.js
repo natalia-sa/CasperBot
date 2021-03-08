@@ -1,12 +1,22 @@
 const PostController = require('./PostController');
+const BotFunctions = require('../Util/Botfunctions');
 
 module.exports = {
+    
     async botResponse(req, res) {
         var intentName = req.body.queryResult.intent.displayName;
 
         if(intentName == "Default Welcome Intent - Política") {
-            res.json({"fulfillmentText":"Notícias sobre politica"});
+            var posts = PostController.FilterByTheme("Politica")
+            let cards = [];
             
+            posts.forEach((item) => {
+                cards.push(BotFunctions.createCard(item.title,item.description,item.imageUrl,item.link)
+            );
+            })
+            res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});
+            
+
         } else if(intentName == "Default Welcome Intent - Entretenimento") {
             res.json({"fulfillmentText":"Notícias sobre entretenimento"});
             

@@ -31,8 +31,7 @@ module.exports = {
         return res.json(post);
     },
 
-    async filterByTheme(req, res) {
-        const {theme} = req.body;
+    async filterByTheme(theme) {
         const posts = await Post.find({theme: theme});
         return res.json(posts);
     }

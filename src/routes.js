@@ -19,7 +19,6 @@ routes.get('/post', PostController.index);
 
 routes.delete('/post', PostController.delete);
 
-routes.get('/postTheme',PostController.filterByTheme);
 
 routes.post('/webhook', BotController.botResponse)
 

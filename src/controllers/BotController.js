@@ -11,20 +11,34 @@ module.exports = {
             let cards = [];
             
             Array.from(posts).forEach((post) => {
-                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link)
-            );
-            })
+                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link))} )
             res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});
             
 
         } else if(intentName == "Default Welcome Intent - Entretenimento") {
-            res.json({"fulfillmentText":"Notícias sobre entretenimento"});
+            var posts = await PostController.filterByTheme("Entretenimento")
+            let cards = [];
+            
+            Array.from(posts).forEach((post) => {
+                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link))} )
+            res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});
             
         } else if(intentName == "Default Welcome Intent - Famosos") {
-            res.json({"fulfillmentText":"Notícias sobre famosos"});
+            var posts = await PostController.filterByTheme("Famosos")
+            let cards = [];
+            
+            Array.from(posts).forEach((post) => {
+                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link))})
+            res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});
             
         } else if(intentName == "Default Welcome Intent - Esportes") {
-            res.json({"fulfillmentText":"Notícias sobre esportes"});
+            var posts = await PostController.filterByTheme("Esportes")
+            let cards = [];
+            
+            Array.from(posts).forEach((post) => {
+                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link)
+            );})
+            res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});
         }
     },
 }

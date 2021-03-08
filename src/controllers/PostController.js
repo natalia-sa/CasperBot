@@ -33,6 +33,6 @@ module.exports = {
 
     async filterByTheme(theme) {
         const posts = await Post.find({theme: theme});
-        return res.json(posts);
+        return posts;
     }
 }

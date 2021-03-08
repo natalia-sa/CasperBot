@@ -7,10 +7,11 @@ module.exports = {
         var intentName = req.body.queryResult.intent.displayName;
 
         if(intentName == "Default Welcome Intent - Política") {
-            var posts = PostController.FilterByTheme("Politica")
+            var posts = await PostController.filterByTheme("Politica")
+            console.log(posts);
             let cards = [];
             
-            posts.forEach((item) => {
+            Array.from(posts).forEach((item) => {
                 cards.push(BotFunctions.createCard(item.title,item.description,item.imageUrl,item.link)
             );
             })

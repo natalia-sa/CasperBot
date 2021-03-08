@@ -19,8 +19,6 @@ routes.get('/post', PostController.index);
 
 routes.delete('/post', PostController.delete);
 
-
 routes.post('/webhook', BotController.botResponse)
-
 
 module.exports = routes;

@@ -5,14 +5,13 @@ module.exports = {
     
     async botResponse(req, res) {
         var intentName = req.body.queryResult.intent.displayName;
-
+        
         if(intentName == "Default Welcome Intent - Política") {
             var posts = await PostController.filterByTheme("Politica")
-            console.log(posts);
             let cards = [];
             
-            Array.from(posts).forEach((item) => {
-                cards.push(BotFunctions.createCard(item.title,item.description,item.imageUrl,item.link)
+            Array.from(posts).forEach((post) => {
+                cards.push(BotFunctions.createCard(post.title,post.description,post.imageUrl,post.link)
             );
             })
             res.json({"fulfillmentMessages": [{"payload": BotFunctions.createCarousel(cards)}]});

@@ -4,8 +4,8 @@ const BotFunctions = require('../Util/Botfunctions');
 module.exports = {
     
     async botResponse(req, res) {
-        // var intentName = req.body.queryResult.intent.displayName;
-        var intentName= "Default Welcome Intent - Entretenimento";
+        var intentName = req.body.queryResult.intent.displayName;
+        
         let cards = [];
         var posts;
 
